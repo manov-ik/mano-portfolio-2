@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+  --color-dot: #8a8a8a;
+}
+
+@layer utilities {
+  .bg-dot-pattern {
+    position: relative;
+    z-index: 1;
+  }
+  .bg-dot-pattern::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: radial-gradient(var(--color-dot) 1px, transparent 1px);
+    background-size: 20px 20px;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(
+      circle at center,
+      black 80%,
+      transparent 100%
+    );
+  }
+}
