@@ -24,7 +24,7 @@ const StickerPeel = ({
   const pointLightFlippedRef = useRef(null);
   const draggableInstanceRef = useRef(null);
 
-  const defaultPadding = 10;
+  const defaultPadding = 40;
 
   useEffect(() => {
     const target = dragTargetRef.current;
