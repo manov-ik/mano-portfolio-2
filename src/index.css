@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-dot: #8a8a8a;
+  --color-dot: #8a8a8a75;
 }
 
 @layer utilities {

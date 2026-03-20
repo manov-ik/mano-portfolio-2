@@ -279,7 +279,7 @@ const StickerPeel = ({
             <feComposite in="lit" in2="SourceAlpha" operator="in" />
           </filter>
 
-          <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+          {/* <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
             <feDropShadow
               dx="2"
               dy="4"
@@ -287,7 +287,7 @@ const StickerPeel = ({
               floodColor="black"
               floodOpacity={shadowIntensity}
             />
-          </filter>
+          </filter> */}
 
           <filter id="expandAndFill">
             <feOffset dx="0" dy="0" in="SourceAlpha" result="shape" />

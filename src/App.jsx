@@ -1,6 +1,7 @@
 import Home from "./pages/Home";
 import CardNav from "./components/CardNav";
 // import MagnetLines from "./components/MagnetLines";
+import manoLogo from "./assets/mano-logo.png";
 
 function App() {
   const items = [
@@ -37,7 +38,7 @@ function App() {
   return (
     <>
       <CardNav
-        // logo={logo}
+        logo={manoLogo}
         logoAlt="MANO"
         items={items}
         baseColor="#fff"
@@ -48,7 +49,7 @@ function App() {
         theme="light"
       />
 
-      <div className="min-h-screen bg-dot-pattern flex items-center justify-center p-4">
+      <div className="bg-dot-pattern min-h-screen">
         <Home />
       </div>
     </>

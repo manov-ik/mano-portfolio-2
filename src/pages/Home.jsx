@@ -1,80 +1,135 @@
-import CardNav from "../components/CardNav";
 import StickerPeel from "../components/StickerPeel";
 import RotatingText from "../components/RotatingText";
 import logo from "../assets/illustation 2.png";
-import mano4 from "../assets/mano2.png";
+import logo127001 from "../assets/logo127001.png";
+import mano1 from "../assets/mano1.png";
+import mano3 from "../assets/mano3.png";
 
 export default function Home() {
   return (
-    <>
+    /* Relative + overflow-hidden prevents stickers from causing horizontal scroll */
+    <div className="relative overflow-hidden w-full min-h-screen flex items-center justify-center px-6 py-16 sm:px-10 md:px-16">
+      {/* Decorative sticker — left side, hidden on small screens */}
       <StickerPeel
         imageSrc={logo}
-        width={200}
+        width={160}
         rotate={-18}
         peelBackHoverPct={30}
         peelBackActivePct={40}
-        shadowIntensity={0.1}
+        shadowIntensity={0.15}
         lightingIntensity={0.01}
-        initialPosition={{ x: -500, y: 200 }}
+        initialPosition="center"
         peelDirection={40}
+        className="block drop-shadow-2xl drop-shadow-black/10 top-[15%] left-[1%] md:top-[15%] md:left-[6%] lg:top-[22%] lg:left-[12%]"
       />
-
+      {/* Bottom-left: illustration, tilted right */}
       <StickerPeel
-        imageSrc={mano4}
-        width={200}
-        rotate={18}
+        imageSrc={mano3}
+        width={260}
+        rotate={14}
         peelBackHoverPct={30}
         peelBackActivePct={40}
-        shadowIntensity={0.1}
+        shadowIntensity={0.15}
         lightingIntensity={0.01}
-        initialPosition={{ x: -100, y: 200 }}
+        initialPosition="center"
         peelDirection={40}
+        className="block drop-shadow-2xl drop-shadow-black/10 bottom-[3%] left-[3%] md:top-[65%] md:left-[8%] lg:top-[67%] lg:left-[14%]"
       />
-      <div className="flex flex-col gap-8 items-start">
-        <div className="left-0 items-center flex text-center text-6xl gap-2">
-          <p
-            style={{
-              fontFamily: "Gaegu, sans-serif",
-              fontWeight: 700,
-              fontStyle: "normal",
-            }}
-          >
-            This is MANO
-          </p>
 
+      {/* ── RIGHT stickers ────────────────────────────────── */}
+      {/* Top-right: photo, tilted left */}
+      <StickerPeel
+        imageSrc={mano1}
+        width={160}
+        rotate={-28}
+        peelBackHoverPct={30}
+        peelBackActivePct={40}
+        shadowIntensity={0.15}
+        lightingIntensity={0.01}
+        initialPosition="center"
+        peelDirection={-40}
+        className="block drop-shadow-2xl drop-shadow-black/10 top-[6%] right-[5%] md:top-[18%] md:right-[8%] lg:top-[25%] lg:right-[14%]"
+      />
+      {/* Bottom-right: photo, tilted right */}
+      <StickerPeel
+        imageSrc={logo127001}
+        width={240}
+        rotate={-18}
+        peelBackHoverPct={30}
+        peelBackActivePct={40}
+        shadowIntensity={0.15}
+        lightingIntensity={0.01}
+        initialPosition="center"
+        peelDirection={-40}
+        className="block drop-shadow-2xl drop-shadow-black/10 bottom-[3%] right-[1%] md:top-[67%] md:right-[10%] lg:top-[75%] lg:right-[18%]"
+      />
+
+      {/* Hero content — centered */}
+      {/* <div className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden"> */}
+      <div className="relative z-10 flex flex-col items-center text-center gap-2">
+        {/* Hi I'm */}
+        <div
+          className="my-2  text-gray-500"
+          style={{ fontFamily: "Gaegu, cursive" }}
+        ></div>
+        <p
+          className="text-2xl sm:text-3xl text-gray-500"
+          style={{ fontFamily: "Gaegu, cursive" }}
+        >
+          Hi, I’m
+        </p>
+        {/* BIG NAME */}
+        <p
+          className="text-[88px] sm:text-[110px] md:text-[130px] lg:text-[150px] leading-none tracking-tight text-black"
+          style={{ fontFamily: "Gaegu, cursive", fontWeight: 700 }}
+        >
+          MANO
+        </p>
+        {/* Rotating role */}
+        <div
+          className="flex items-center justify-center gap-3 text-2xl sm:text-3xl mt-1"
+          style={{ fontFamily: "Gaegu, cursive" }}
+        >
+          <span className="text-gray-500">a</span>
           <RotatingText
             texts={["Developer", "Creator", "Designer", "ML Engineer"]}
-            mainClassName="px-2 sm:px-2 md:px-3 bg-purple-400 text-white bold overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
-            style={{
-              fontFamily: "Gaegu, sans-serif",
-              fontWeight: 700,
-              fontStyle: "normal",
-            }}
-            staggerFrom={"last"}
+            mainClassName="px-4 py-1 rounded-lg bg-white shadow-lg -rotate-2 text-[#7e57e2] text-2xl sm:text-3xl"
+            staggerFrom="last"
             initial={{ y: "100%" }}
             animate={{ y: 0 }}
             exit={{ y: "-120%" }}
             staggerDuration={0.025}
-            splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+            splitLevelClassName="overflow-hidden"
             transition={{ type: "spring", damping: 30, stiffness: 400 }}
-            rotationInterval={3000}
+            rotationInterval={2500}
           />
         </div>
+        {/* Description */}
         <p
-          className="text-lg w-[90%] sm:w-[80%] md:w-[60%] text-left"
-          style={{
-            fontFamily: "Gaegu, sans-serif",
-            fontWeight: 400,
-            fontStyle: "normal",
-          }}
+          className="text-gray-500 max-w-sm sm:max-w-md leading-relaxed mt-6 text-lg sm:text-xl"
+          style={{ fontFamily: "Gaegu, cursive" }}
         >
-          I’m Manovikram K, a final year engineering student focused on building
-          optimal and scalable systems. As a designer and developer, I aim to
-          develop solutions that are clean, minimal and highly functional. My
-          work involves full-stack development and Machine Learning to develop
-          structured, end-to-end applications that go from idea to deployment.
+          I build clean full-stack apps and ML systems from idea to deployment.
         </p>
+        {/* CTA */}
+        <div className="flex flex-row gap-4 mt-6 text-lg sm:text-xl">
+          <a
+            href="#projects"
+            className="px-6 py-2.5 sm:py-3 rounded-xl border border-black text-black hover:bg-black hover:shadow-lg hover:text-white duration-300 transition-all"
+            style={{ fontFamily: "Gaegu, cursive" }}
+          >
+            Projects
+          </a>
+          <a
+            href="#contact"
+            className="px-6 py-2.5 sm:py-3 rounded-xl text-black hover:text-black hover:bg-white hover:shadow-lg duration-300 transition-all"
+            style={{ fontFamily: "Gaegu, cursive" }}
+          >
+            Contact
+          </a>
+        </div>
+        {/* </div> */}
       </div>
-    </>
+    </div>
   );
 }
