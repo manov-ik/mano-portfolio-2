@@ -1,4 +1,9 @@
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import Writes from "./pages/Writes";
+import WritingDetail from "./pages/WritingDetail";
+import Projects from "./pages/Projects";
+import DesignWorks from "./pages/Designworks";
 import CardNav from "./components/CardNav";
 // import MagnetLines from "./components/MagnetLines";
 import manoLogo from "./assets/mano-logo.png";
@@ -19,8 +24,9 @@ function App() {
       bgColor: "#170D27",
       textColor: "#fff",
       links: [
-        { label: "Projects", ariaLabel: "Projects" },
-        { label: "Writes", ariaLabel: "Writings" },
+        { label: "Projects", ariaLabel: "Projects", href: "/projects" },
+        { label: "Design", ariaLabel: "Design Works", href: "/design" },
+        { label: "Writes", ariaLabel: "Writings", href: "/writes" },
       ],
     },
     {
@@ -35,8 +41,9 @@ function App() {
       ],
     },
   ];
+
   return (
-    <>
+    <div className="bg-dot-pattern min-h-screen">
       <CardNav
         logo={manoLogo}
         logoAlt="MANO"
@@ -49,10 +56,14 @@ function App() {
         theme="light"
       />
 
-      <div className="bg-dot-pattern min-h-screen">
-        <Home />
-      </div>
-    </>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/design" element={<DesignWorks />} />
+        <Route path="/writes" element={<Writes />} />
+        <Route path="/writes/:slug" element={<WritingDetail />} />
+      </Routes>
+    </div>
   );
 }
 
