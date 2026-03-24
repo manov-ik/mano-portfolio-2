@@ -4,6 +4,8 @@ import Writes from "./pages/Writes";
 import WritingDetail from "./pages/WritingDetail";
 import Projects from "./pages/Projects";
 import DesignWorks from "./pages/Designworks";
+import Education from "./pages/Education";
+import Experience from "./pages/Experience";
 import CardNav from "./components/CardNav";
 // import MagnetLines from "./components/MagnetLines";
 import manoLogo from "./assets/mano-logo.png";
@@ -15,8 +17,8 @@ function App() {
       bgColor: "#0D0716",
       textColor: "#fff",
       links: [
-        { label: "Experience", ariaLabel: "My Experience" },
-        { label: "Education", ariaLabel: "My Education" },
+        { label: "Experience", ariaLabel: "My Experience", href: "/experience" },
+        { label: "Education", ariaLabel: "My Education", href: "/education" },
       ],
     },
     {
@@ -58,6 +60,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/education" element={<Education />} />
+        <Route path="/experience" element={<Experience />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/design" element={<DesignWorks />} />
         <Route path="/writes" element={<Writes />} />
