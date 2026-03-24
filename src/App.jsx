@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Writes from "./pages/Writes";
 import WritingDetail from "./pages/WritingDetail";
 import Projects from "./pages/Projects";
+import ProjectDetailPage from "./pages/ProjectDetailPage";
 import DesignWorks from "./pages/Designworks";
 import Education from "./pages/Education";
 import Experience from "./pages/Experience";
@@ -63,6 +64,7 @@ function App() {
         <Route path="/education" element={<Education />} />
         <Route path="/experience" element={<Experience />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/projects/:slug" element={<ProjectDetailPage />} />
         <Route path="/design" element={<DesignWorks />} />
         <Route path="/writes" element={<Writes />} />
         <Route path="/writes/:slug" element={<WritingDetail />} />
