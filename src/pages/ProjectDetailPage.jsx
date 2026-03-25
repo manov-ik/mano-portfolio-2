@@ -14,8 +14,13 @@ const ProjectDetailPage = () => {
         className="min-h-screen flex flex-col items-center justify-center "
         style={{ fontFamily: "Gaegu, cursive" }}
       >
+        <div
+          className="text-center py-20 animate-pulse text-4xl text-gray-400"
+          style={{ fontFamily: "Gaegu, cursive" }}
+        >
+          Unfolding the story...
+        </div>
         {/* <div className="w-16 h-16 border-4 border-dashed border-[#7e57e2] rounded-full animate-spin mb-4" /> */}
-        <p className="text-3xl text-gray-400">Unfolding the story...</p>
       </div>
     );
 
@@ -44,20 +49,17 @@ const ProjectDetailPage = () => {
       style={{ fontFamily: "Gaegu, cursive" }}
     >
       {/* ── Floating Navigation ── */}
-      <nav className="fixed top-8 left-8 z-50">
-        <Link
-          to="/projects"
-          className="group flex items-center gap-2 bg-white/80 backdrop-blur-md border border-gray-200 px-5 py-2 rounded-full shadow-sm hover:shadow-md transition-all"
-        >
-          <span className="group-hover:-translate-x-1 transition-transform">
-            ←
-          </span>
-          <span className="text-xl">Back to Works</span>
-        </Link>
-      </nav>
 
       <main className="max-w-6xl mx-auto px-6">
         {/* ── Hero: The "Pinned Polaroid" ── */}
+
+        <Link
+          to="/projects"
+          className="inline-block text-gray-400 hover:text-black transition-colors duration-200 mt-6 text-lg"
+        >
+          back to projects
+        </Link>
+
         <header className="relative pt-16 mb-24">
           <div className="relative group max-w-4xl mx-auto">
             {/* Decorative "Tape" */}
@@ -138,7 +140,7 @@ const ProjectDetailPage = () => {
           <aside className="lg:col-span-4 space-y-12">
             <div>
               <h2 className="text-sm uppercase tracking-[0.3em] text-gray-400 mb-6">
-                Tools Used
+                Stack
               </h2>
               <div className="flex flex-wrap gap-3">
                 {project.tech_stack.map((tech) => (
@@ -174,7 +176,7 @@ const ProjectDetailPage = () => {
           <Link to="/projects" className="group inline-block">
             <p className="text-gray-400 text-xl mb-2">Want to see more?</p>
             <span className="text-5xl sm:text-7xl font-bold group-hover:text-[#7e57e2] transition-colors">
-              NEXT PROJECT →
+              back to projects
             </span>
           </Link>
         </footer>

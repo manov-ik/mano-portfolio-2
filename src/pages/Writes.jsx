@@ -55,11 +55,10 @@ const Writes = () => {
     return (
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
         <div
-          className="flex flex-col items-center gap-3 text-center"
+          className="text-center py-20 animate-pulse text-4xl"
           style={{ fontFamily: "Gaegu, cursive" }}
         >
-          <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-[#7e57e2]" />
-          <p className="text-2xl text-gray-400">loading writings...</p>
+          fetching writings...
         </div>
       </div>
     );
@@ -67,27 +66,25 @@ const Writes = () => {
 
   if (error) {
     return (
-      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-6">
+      <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center gap-2 px-6">
         <div
           className="flex flex-col items-center text-center gap-2"
           style={{ fontFamily: "Gaegu, cursive" }}
         >
-          <p className="text-2xl sm:text-3xl text-gray-400">
-            something went wrong
-          </p>
           <p
             className="text-[88px] sm:text-[110px] leading-none tracking-tight text-black"
             style={{ fontWeight: 700 }}
           >
             oops.
           </p>
-          <p className="text-gray-400 mt-4 text-lg max-w-sm">{error}</p>
+        </div>
+        <div className="text-center">
           <button
             onClick={refetch}
-            className="mt-6 px-6 py-2.5 rounded-xl border border-black text-black hover:bg-black hover:text-white duration-300 transition-all text-lg"
+            className="text-4xl text-gray-400 hover:text-black hover:cursor-pointer transition-all duration-300"
             style={{ fontFamily: "Gaegu, cursive" }}
           >
-            Try Again
+            Error. Try again?
           </button>
         </div>
       </div>
@@ -116,7 +113,6 @@ const Writes = () => {
           </p>
         </div>
       </div>
-
       {/* ── Grid ── */}
       <div className="px-6 sm:px-10 md:px-16 py-6 max-w-5xl mx-auto">
         {writings.length === 0 ? (

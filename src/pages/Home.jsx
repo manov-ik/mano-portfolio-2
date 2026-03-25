@@ -5,8 +5,6 @@ import logo127001 from "../assets/logo127001.png";
 import mano1 from "../assets/mano1.png";
 import mano3 from "../assets/mano3.png";
 
-import TextPressure from "../components/TextPressure";
-
 export default function Home() {
   return (
     /* Relative + overflow-hidden prevents stickers from causing horizontal
@@ -136,19 +134,6 @@ export default function Home() {
           {/* </div> */}
         </div>
       </div>
-      <TextPressure
-        text="MANOVIKRAM K"
-        flex
-        alpha={false}
-        stroke={false}
-        width
-        weight
-        italic
-        textColor="#000"
-        strokeColor="#5227FF"
-        minFontSize={36}
-        style={{ fontFamily: "Gaegu, cursive" }}
-      />
     </>
   );
 }

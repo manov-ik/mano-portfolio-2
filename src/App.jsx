@@ -5,8 +5,10 @@ import WritingDetail from "./pages/WritingDetail";
 import Projects from "./pages/Projects";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import DesignWorks from "./pages/Designworks";
-import Education from "./pages/Education";
-import Experience from "./pages/Experience";
+import About from "./pages/About";
+import Gallery from "./pages/Gallery";
+import GalleryDetail from "./pages/GalleryDetail";
+import Contact from "./pages/Contact";
 import CardNav from "./components/CardNav";
 // import MagnetLines from "./components/MagnetLines";
 import manoLogo from "./assets/mano-logo.png";
@@ -18,8 +20,8 @@ function App() {
       bgColor: "#0D0716",
       textColor: "#fff",
       links: [
-        { label: "Experience", ariaLabel: "My Experience", href: "/experience" },
-        { label: "Education", ariaLabel: "My Education", href: "/education" },
+        { label: "About Me", ariaLabel: "About Me", href: "/about" },
+        { label: "Gallery", ariaLabel: "Gallery", href: "/gallery" },
       ],
     },
     {
@@ -40,7 +42,7 @@ function App() {
         { label: "Email", ariaLabel: "Email me" },
         { label: "Instagram", ariaLabel: "Instagram" },
         { label: "LinkedIn", ariaLabel: "LinkedIn" },
-        { label: "Other", ariaLabel: "Other" },
+        { label: "Other", ariaLabel: "Other", href: "/contact" },
       ],
     },
   ];
@@ -61,13 +63,15 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/education" element={<Education />} />
-        <Route path="/experience" element={<Experience />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/gallery/:id" element={<GalleryDetail />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/projects/:slug" element={<ProjectDetailPage />} />
         <Route path="/design" element={<DesignWorks />} />
         <Route path="/writes" element={<Writes />} />
         <Route path="/writes/:slug" element={<WritingDetail />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </div>
   );
