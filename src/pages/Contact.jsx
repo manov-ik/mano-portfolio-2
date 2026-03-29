@@ -200,13 +200,15 @@ export const socials = [
     handle: "manozart5@gmail.com",
     href: "mailto:manozart5@gmail.com",
     color: "#7e57e2",
+    hint: "drop a message in my inbox",
   },
   {
     id: "linkedin",
     label: "LinkedIn",
-    handle: "manovikramk",
-    href: "https://www.linkedin.com/in/manovikramk/",
+    handle: "manovikram k",
+    href: "https://www.linkedin.com/in/manovikramk",
     color: "#2563eb",
+    hint: "let's connect professionally",
   },
   {
     id: "github",
@@ -214,6 +216,7 @@ export const socials = [
     handle: "@manov-ik",
     href: "https://github.com/manov-ik",
     color: "#374151",
+    hint: "where the code lives",
   },
   {
     id: "whatsapp",
@@ -221,27 +224,31 @@ export const socials = [
     handle: "+91 93610 26919",
     href: "https://wa.me/919361026919",
     color: "#16a34a",
+    hint: "ping me on WhatsApp",
   },
   {
     id: "instagram",
     label: "Instagram",
     handle: "@manov_ik",
-    href: "https://www.instagram.com/manov_ik/",
+    href: "https://www.instagram.com/manov_ik",
     color: "#e05c97",
+    hint: "reels, stories & vibes",
   },
   {
     id: "pinterest",
     label: "Pinterest",
     handle: "@manov_ik",
-    href: "https://in.pinterest.com/manov_ik/",
+    href: "https://in.pinterest.com/manov_ik",
     color: "#e11d48",
+    hint: "mood boards & inspo",
   },
   {
     id: "reddit",
     label: "Reddit",
     handle: "@manov_ik",
-    href: "https://www.reddit.com/user/manov_ik/",
+    href: "https://www.reddit.com/user/manov_ik",
     color: "#ea580c",
+    hint: "idk",
   },
   {
     id: "kaggle",
@@ -249,6 +256,23 @@ export const socials = [
     handle: "@manovik",
     href: "https://www.kaggle.com/manovik",
     color: "#0891b2",
+    hint: "data",
+  },
+  {
+    id: "huggingface",
+    label: "HuggingFace",
+    handle: "@manov-ik",
+    href: "https://huggingface.co/manov-ik",
+    color: "#FFD21E",
+    hint: "models",
+  },
+  {
+    id: "resume",
+    label: "RESUME",
+    handle: "manovikram k",
+    href: "/Manovikram K's Resume.pdf",
+    color: "#000",
+    hint: "doc about me",
   },
 ];
 
@@ -295,6 +319,9 @@ export default function Contact() {
                 {/* <div className="absolute top-0 left-0 w-full h-[2px] border-t border-dashed border-gray-200" /> */}
 
                 <div className="flex flex-col items-start">
+                  <span className="text-sm md:text-lg text-gray-400 group-hover:text-gray-500 transition-colors">
+                    {s.hint}
+                  </span>
                   {/* BIG Title with Brand Color */}
                   <span
                     className="text-5xl md:text-6xl font-bold leading-none mb-1"
@@ -302,8 +329,8 @@ export default function Contact() {
                   >
                     {s.label}
                   </span>
-
                   {/* SMALL Detail (Handle) */}
+
                   <span className="text-lg md:text-xl text-gray-400 group-hover:text-black transition-colors">
                     {s.handle}
                   </span>
@@ -314,9 +341,9 @@ export default function Contact() {
         </div>
 
         {/* ── Minimal Footer ── */}
-        <div className="mt-20 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
+        <div className=" mt-20 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
           <p className="text-2xl text-gray-300 max-w-sm leading-snug">
-            I'm usually available. Worst case, I'll reply eventually.
+            these are my socials, where we can connect & vibe
           </p>
           <Link
             to="/"

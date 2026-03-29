@@ -17,13 +17,12 @@ const WritingDetail = () => {
       //   </div>
       // </div>
       <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
-
-      <div
-        className="text-center py-20 animate-pulse text-4xl"
-        style={{ fontFamily: "Gaegu, cursive" }}
-      >
-        loading writing...
-      </div>
+        <div
+          className="text-center py-20 animate-pulse text-4xl"
+          style={{ fontFamily: "Gaegu, cursive" }}
+        >
+          loading writing...
+        </div>
       </div>
     );
   }

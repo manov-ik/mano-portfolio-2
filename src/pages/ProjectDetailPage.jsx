@@ -65,7 +65,7 @@ const ProjectDetailPage = () => {
             {/* Decorative "Tape" */}
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-10 bg-[#7e57e2]/10 rotate-1 z-20 backdrop-blur-sm border border-white/20" />
 
-            <div className="aspect-video rounded-sm overflow-hidden shadow-2xl rotate-[-1deg] group-hover:rotate-0 transition-transform duration-700 bg-white p-3">
+            <div className="aspect-video rounded-sm overflow-hidden shadow-2xl -rotate-1 group-hover:rotate-0 transition-transform duration-700 bg-white p-3">
               {project.image_url ? (
                 <img
                   src={project.image_url}

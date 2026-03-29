@@ -39,16 +39,31 @@ function App() {
       bgColor: "#271E37",
       textColor: "#fff",
       links: [
-        { label: "Email", ariaLabel: "Email me" },
-        { label: "Instagram", ariaLabel: "Instagram" },
-        { label: "LinkedIn", ariaLabel: "LinkedIn" },
+        {
+          label: "WhatsApp",
+          ariaLabel: "WhatsApp",
+          href: "https://wa.me/919361026919",
+        },
+        {
+          label: "Instagram",
+          ariaLabel: "Instagram",
+          href: "https://www.instagram.com/manov_ik",
+        },
+        {
+          label: "LinkedIn",
+          ariaLabel: "LinkedIn",
+          href: "https://www.linkedin.com/in/manovikramk",
+        },
         { label: "Other", ariaLabel: "Other", href: "/contact" },
       ],
     },
   ];
 
   return (
-    <div className="bg-dot-pattern min-h-screen">
+    <div
+      className="bg-dot-pattern min-h-screen"
+      // style={{ fontFamily: "Gaegu, cursive" }}
+    >
       <CardNav
         logo={manoLogo}
         logoAlt="MANO"

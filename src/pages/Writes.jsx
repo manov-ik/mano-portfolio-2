@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { useWritings } from "../hooks/useWritings";
 
 const WritingRow = ({ writing, index }) => {
@@ -51,48 +52,12 @@ const WritingRow = ({ writing, index }) => {
 const Writes = () => {
   const { writings, loading, error, refetch } = useWritings();
 
-  if (loading) {
-    return (
-      <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center">
-        <div
-          className="text-center py-20 animate-pulse text-4xl"
-          style={{ fontFamily: "Gaegu, cursive" }}
-        >
-          fetching writings...
-        </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center gap-2 px-6">
-        <div
-          className="flex flex-col items-center text-center gap-2"
-          style={{ fontFamily: "Gaegu, cursive" }}
-        >
-          <p
-            className="text-[88px] sm:text-[110px] leading-none tracking-tight text-black"
-            style={{ fontWeight: 700 }}
-          >
-            oops.
-          </p>
-        </div>
-        <div className="text-center">
-          <button
-            onClick={refetch}
-            className="text-4xl text-gray-400 hover:text-black hover:cursor-pointer transition-all duration-300"
-            style={{ fontFamily: "Gaegu, cursive" }}
-          >
-            Error. Try again?
-          </button>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-[calc(100vh-4rem)] pt-16">
+      <Helmet>
+        <title>Writings - Manovikram K</title>
+        <meta name="description" content="Thoughts, tutorials, and insights by Manovikram K on tech, code, design, and everything in between." />
+      </Helmet>
       {/* ── Header ── */}
       <div
         className="px-6 sm:px-10 md:px-16 pt-16 pb-10 "
@@ -115,7 +80,33 @@ const Writes = () => {
       </div>
       {/* ── Grid ── */}
       <div className="px-6 sm:px-10 md:px-16 py-6 max-w-5xl mx-auto">
-        {writings.length === 0 ? (
+        {loading ? (
+          <div
+            className="text-center py-20 animate-pulse text-4xl"
+            style={{ fontFamily: "Gaegu, cursive" }}
+          >
+            fetching writings...
+          </div>
+        ) : error ? (
+          <div className="text-center py-20 flex flex-col items-center justify-center gap-2">
+            <div className="text-center">
+              <button
+                onClick={refetch}
+                className="text-4xl text-gray-400 hover:text-black hover:cursor-pointer transition-all duration-300"
+                style={{ fontFamily: "Gaegu, cursive" }}
+              >
+                Error. Try again?
+              </button>
+            </div>
+            <Link
+              to="/"
+              className="px-6 py-2.5 sm:py-3 mt-4 rounded-xl text-black hover:bg-white hover:shadow-lg duration-300 transition-all"
+              style={{ fontFamily: "Gaegu, cursive" }}
+            >
+              home
+            </Link>
+          </div>
+        ) : writings.length === 0 ? (
           <div
             className="flex flex-col items-center text-center gap-2 py-24"
             style={{ fontFamily: "Gaegu, cursive" }}

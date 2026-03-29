@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import StickerPeel from "../components/StickerPeel";
 import mano1 from "../assets/mano1.png";
 import TextPressure from "../components/TextPressure";
@@ -37,7 +38,15 @@ const educationData = [
     company: "Rajalakshmi Engineering College",
     description:
       "Pursuing a degree in Mechanical Engineering while actively building software projects and leading tech initiatives.",
-    tags: ["Chennai, India"],
+    tags: ["Chennai, Tamil Nadu, India"],
+  },
+  {
+    dateRange: "2009 – 2022",
+    title: "1st to 12th Standard",
+    company: "CK School",
+    description:
+      "From where it all began - the foundation for most of what I do. From programming to design, including sculpture, painting, and coding.",
+    tags: ["Cuddalore, Tamil Nadu, India"],
   },
 ];
 
@@ -244,6 +253,10 @@ const other = [
 const About = () => {
   return (
     <div className="relative w-full min-h-[calc(100vh-4rem)] overflow-hidden pt-16">
+      <Helmet>
+        <title>About - Manovikram K</title>
+        <meta name="description" content="Learn more about Manovikram K - a curious developer and designer from Chennai, building things he actually cares about. Skills, experience, and education." />
+      </Helmet>
       <StickerPeel
         imageSrc={mano1}
         width={160}
@@ -254,7 +267,7 @@ const About = () => {
         lightingIntensity={0.01}
         initialPosition="center"
         peelDirection={-40}
-        className="block drop-shadow-2xl drop-shadow-black/10 z-20 top-[12%] right-[5%] md:top-[2%] md:right-[8%] lg:top-[6%] lg:right-[14%]"
+        className="block drop-shadow-2xl drop-shadow-black/10 z-20 top-[15%] right-[5%] md:top-[2%] md:right-[8%] lg:top-[6%] lg:right-[14%]"
       />
 
       {/* ── About Me Section ── */}
@@ -275,12 +288,28 @@ const About = () => {
         </div>
         <div className="max-w-5xl mx-auto mt-6 pl-1 sm:pl-2">
           <p className="text-gray-500 text-lg sm:text-xl leading-relaxed max-w-3xl text-justify">
+            Hello, I’m Manovikram K. A curious guy in his early 20s trying to
+            spend his time doing things he actually cares about. I like building
+            things, but I’m not just about code.
+            <br />
+            <br />
+            I enjoy understanding how things work - whether it’s software,
+            design, or just how people think. Most of what I do comes from
+            solving my own problems or curiosity turning into something real.
+            <br />
+            <br />
+            Outside of that - I’m into music, books, random ideas, and figuring
+            life out one step at a time. I don’t have everything planned. I just
+            try to stay consistent, keep learning, and build things that matter
+            to me.
+            {/* 
             I’m Manovikram K, a final year engineering student focused on
             building optimal and scalable systems. As a designer and developer,
             I aim to develop solutions that are clean, minimal and highly
             functional. My work involves full-stack development and Machine
             Learning to develop structured, end-to-end applications that go from
-            idea to deployment.
+            idea to deployment. 
+            */}
           </p>
           <p className="text-black text-md lg:text-lg mt-4 lg:mt-6">
             CREATE.DEVELOP.DEPLOY.

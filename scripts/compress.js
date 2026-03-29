@@ -2,9 +2,9 @@ import sharp from "sharp";
 import fs from "fs";
 import path from "path";
 
-const inputFolder = "./unc_gallery";
-const outputFolder = "./public/gallery";
-const dataOutputFile = "./src/data/galleryData.js";
+const inputFolder = "./unc_design";
+const outputFolder = "./public/design";
+const dataOutputFile = "./src/data/designData.js";
 
 // Recursive function to compress images and maintain folder structure
 async function compressFolder(currentInput, currentOutput) {
@@ -53,7 +53,9 @@ function generateGalleryData() {
 
     // Sort files by name in descending order using natural (numeric) sort
     // This correctly handles numbers so "22" comes before "3" rather than regular string sorting.
-    const sortedFiles = [...files].sort((a, b) => b.localeCompare(a, undefined, { numeric: true }));
+    const sortedFiles = [...files].sort((a, b) =>
+      b.localeCompare(a, undefined, { numeric: true }),
+    );
 
     const title = folder.charAt(0).toUpperCase() + folder.slice(1);
 

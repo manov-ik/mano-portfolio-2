@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { useProjects } from "../hooks/useProjects";
 
 // ── Project row: Staggered & Rotated ───────────────────────────────────────────
@@ -82,6 +83,10 @@ function Projects() {
 
   return (
     <div className="min-h-screen selection:bg-[#7e57e2]/20">
+      <Helmet>
+        <title>Projects - Manovikram K</title>
+        <meta name="description" content="Selected works by Manovikram K - a collection of full-stack, ML, and design projects built with pixels, logic, and late-night caffeine." />
+      </Helmet>
       {/* ── Quirky Header ── */}
       <header className="px-6 pt-16  max-w-6xl mx-auto ">
         <div
@@ -118,14 +123,23 @@ function Projects() {
             fetching ideas...
           </div>
         ) : error ? (
-          <div className="text-center py-20">
-            <button
-              onClick={refetch}
-              className="text-4xl hover:line-through"
+          <div className="text-center py-20 flex flex-col items-center justify-center gap-2">
+            <div className="text-center">
+              <button
+                onClick={refetch}
+                className="text-4xl text-gray-400 hover:text-black hover:cursor-pointer transition-all duration-300"
+                style={{ fontFamily: "Gaegu, cursive" }}
+              >
+                Error. Try again?
+              </button>
+            </div>
+            <Link
+              to="/"
+              className="px-6 py-2.5 sm:py-3 mt-4 rounded-xl text-black hover:bg-white hover:shadow-lg duration-300 transition-all"
               style={{ fontFamily: "Gaegu, cursive" }}
             >
-              Error. Try again?
-            </button>
+              home
+            </Link>
           </div>
         ) : (
           <div className="flex flex-col">

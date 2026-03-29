@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO: Uncomment and replace YOUR_DOMAIN once deployed
+# Sitemap: YOUR_DOMAIN/sitemap.xml
