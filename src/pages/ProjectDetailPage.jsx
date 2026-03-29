@@ -162,10 +162,10 @@ const ProjectDetailPage = () => {
                 I'm always down to chat about the tech behind this.
               </p>
               <a
-                href="mailto:your@email.com"
+                href="/contact"
                 className="text-xl font-bold underline underline-offset-4 decoration-wavy"
               >
-                Say Hello
+                Contact
               </a>
             </div>
           </aside>
