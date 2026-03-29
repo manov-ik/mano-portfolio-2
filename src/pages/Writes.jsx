@@ -57,6 +57,7 @@ const Writes = () => {
       <Helmet>
         <title>Writings - Manovikram K</title>
         <meta name="description" content="Thoughts, tutorials, and insights by Manovikram K on tech, code, design, and everything in between." />
+        <link rel="canonical" href="https://manovik.netlify.app/writes" />
       </Helmet>
       {/* ── Header ── */}
       <div

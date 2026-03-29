@@ -86,6 +86,7 @@ function Projects() {
       <Helmet>
         <title>Projects - Manovikram K</title>
         <meta name="description" content="Selected works by Manovikram K - a collection of full-stack, ML, and design projects built with pixels, logic, and late-night caffeine." />
+        <link rel="canonical" href="https://manovik.netlify.app/projects" />
       </Helmet>
       {/* ── Quirky Header ── */}
       <header className="px-6 pt-16  max-w-6xl mx-auto ">

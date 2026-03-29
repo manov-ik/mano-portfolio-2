@@ -256,6 +256,7 @@ const About = () => {
       <Helmet>
         <title>About - Manovikram K</title>
         <meta name="description" content="Learn more about Manovikram K - a curious developer and designer from Chennai, building things he actually cares about. Skills, experience, and education." />
+        <link rel="canonical" href="https://manovik.netlify.app/about" />
       </Helmet>
       <StickerPeel
         imageSrc={mano1}

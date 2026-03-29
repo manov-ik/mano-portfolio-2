@@ -14,6 +14,7 @@ export default function Home() {
       <Helmet>
         <title>Manovikram K - Developer, Designer &amp; ML Engineer</title>
         <meta name="description" content="Hi, I'm Manovikram K - a developer, designer, and ML engineer. Explore my projects, writings, and design work all in one place." />
+        <link rel="canonical" href="https://manovik.netlify.app/" />
       </Helmet>
       <div className="relative overflow-hidden w-full min-h-screen flex items-center justify-center px-6 py-16 sm:px-10 md:px-16">
         {/* Decorative sticker — left side, hidden on small screens */}
