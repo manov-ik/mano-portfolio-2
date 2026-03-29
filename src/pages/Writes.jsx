@@ -56,7 +56,10 @@ const Writes = () => {
     <div className="min-h-[calc(100vh-4rem)] pt-16">
       <Helmet>
         <title>Writings - Manovikram K</title>
-        <meta name="description" content="Thoughts, tutorials, and insights by Manovikram K on tech, code, design, and everything in between." />
+        <meta
+          name="description"
+          content="Thoughts, tutorials, and insights by Manovikram K on tech, code, design, and everything in between."
+        />
         <link rel="canonical" href="https://manovik.netlify.app/writes" />
       </Helmet>
       {/* ── Header ── */}
@@ -123,7 +126,7 @@ const Writes = () => {
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {writings.map((writing, i) => (
+              {[...writings].reverse().map((writing, i) => (
                 <WritingRow key={writing.slug} writing={writing} index={i} />
               ))}
             </div>
