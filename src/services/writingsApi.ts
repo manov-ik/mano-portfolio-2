@@ -55,9 +55,9 @@ class WritingsApiService {
     }
   }
 
-  // Get all writings (backend sorts by order_index ASC, created_at DESC)
-  async getWritings(): Promise<WritingsResponse> {
-    return this.makeRequest<WritingsResponse>('/writings');
+  // Get paginated writings (backend sorts by order_index DESC, created_at DESC)
+  async getWritings(page: number = 1, limit: number = 10): Promise<WritingsResponse> {
+    return this.makeRequest<WritingsResponse>(`/writings?page=${page}&limit=${limit}`);
   }
 
   // Get a single writing by slug

@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useWritings } from "../hooks/useWritings";
@@ -50,7 +51,25 @@ const WritingRow = ({ writing, index }) => {
 };
 
 const Writes = () => {
-  const { writings, loading, error, refetch } = useWritings();
+  const { writings, loading, loadingMore, error, hasMore, total, refetch, loadMore } = useWritings(6);
+  const observerRef = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting && hasMore && !loading && !loadingMore) {
+          loadMore();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (observerRef.current) {
+      observer.observe(observerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [hasMore, loading, loadingMore, loadMore]);
 
   return (
     <div className="min-h-[calc(100vh-4rem)] pt-16">
@@ -84,14 +103,14 @@ const Writes = () => {
       </div>
       {/* ── Grid ── */}
       <div className="px-6 sm:px-10 md:px-16 py-6 max-w-5xl mx-auto">
-        {loading ? (
+        {loading && writings.length === 0 ? (
           <div
             className="text-center py-20 animate-pulse text-4xl"
             style={{ fontFamily: "Gaegu, cursive" }}
           >
             fetching writings...
           </div>
-        ) : error ? (
+        ) : error && writings.length === 0 ? (
           <div className="text-center py-20 flex flex-col items-center justify-center gap-2">
             <div className="text-center">
               <button
@@ -126,15 +145,25 @@ const Writes = () => {
         ) : (
           <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[...writings].reverse().map((writing, i) => (
+              {writings.map((writing, i) => (
                 <WritingRow key={writing.slug} writing={writing} index={i} />
               ))}
             </div>
+
+            {/* Load More Trigger */}
+            <div ref={observerRef} className="h-10 w-full flex items-center justify-center mt-10">
+              {loadingMore && (
+                <p className="text-2xl text-gray-400 animate-pulse" style={{ fontFamily: "Gaegu, cursive" }}>
+                  loading more...
+                </p>
+              )}
+            </div>
+
             <p
               className="text-sm text-gray-400 text-right mt-6 pb-10"
               style={{ fontFamily: "Gaegu, cursive" }}
             >
-              {writings.length} {writings.length === 1 ? "entry" : "entries"}
+              {writings.length} / {total} {total === 1 ? "entry" : "entries"}
             </p>
           </>
         )}

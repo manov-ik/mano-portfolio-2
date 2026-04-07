@@ -39,53 +39,88 @@ function writeCache<T>(key: string, data: T): void {
 interface UseWritingsReturn {
   writings: Writing[];
   loading: boolean;
+  loadingMore: boolean;
   error: string | null;
+  hasMore: boolean;
+  total: number;
   refetch: () => Promise<void>;
+  loadMore: () => Promise<void>;
 }
 
 const WRITINGS_CACHE_KEY = 'writings_cache';
 
-export const useWritings = (): UseWritingsReturn => {
-  // Seed state from cache immediately — no spinner on cache hit
-  const [writings, setWritings] = useState<Writing[]>(
-    () => readCache<Writing[]>(WRITINGS_CACHE_KEY) ?? []
-  );
-  const [loading, setLoading] = useState<boolean>(
-    () => readCache<Writing[]>(WRITINGS_CACHE_KEY) === null
-  );
+export const useWritings = (limit: number = 6): UseWritingsReturn => {
+  const [writings, setWritings] = useState<Writing[]>(() => {
+    const cached = readCache<Writing[]>(WRITINGS_CACHE_KEY);
+    return cached || [];
+  });
+  const [loading, setLoading] = useState<boolean>(writings.length === 0);
+  const [loadingMore, setLoadingMore] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [page, setPage] = useState<number>(1);
+  const [total, setTotal] = useState<number>(0);
+  const [hasMore, setHasMore] = useState<boolean>(true);
 
-  const fetchWritings = useCallback(async (force = false) => {
-    if (!force) {
-      const cached = readCache<Writing[]>(WRITINGS_CACHE_KEY);
-      if (cached) {
-        setWritings(cached);
-        setLoading(false);
-        return;
-      }
-    }
-
+  const fetchWritings = useCallback(async (targetPage: number, isLoadMore: boolean = false) => {
     try {
-      setLoading(true);
+      if (isLoadMore) setLoadingMore(true);
+      else setLoading(true);
+      
       setError(null);
-      const response = await writingsApi.getWritings();
-      setWritings(response.writings);
-      writeCache(WRITINGS_CACHE_KEY, response.writings);
+      const response = await writingsApi.getWritings(targetPage, limit);
+      
+      if (isLoadMore) {
+        setWritings(prev => [...prev, ...response.writings]);
+      } else {
+        setWritings(response.writings);
+        // Only cache the first page for quick initial load
+        if (targetPage === 1) {
+          writeCache(WRITINGS_CACHE_KEY, response.writings);
+        }
+      }
+      
+      setTotal(response.total);
+      setHasMore(writings.length + response.writings.length < response.total);
+      setPage(targetPage);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to fetch writings');
       console.error('Error fetching writings:', err);
     } finally {
       setLoading(false);
+      setLoadingMore(false);
     }
-  }, []);
+  }, [limit, writings.length]);
 
-  const refetch = useCallback(() => fetchWritings(true), [fetchWritings]);
+  const loadMore = useCallback(async () => {
+    if (loading || loadingMore || !hasMore) return;
+    await fetchWritings(page + 1, true);
+  }, [fetchWritings, page, loading, loadingMore, hasMore]);
 
-  useEffect(() => {
-    fetchWritings();
+  const refetch = useCallback(() => {
+    setPage(1);
+    return fetchWritings(1, false);
   }, [fetchWritings]);
 
-  return { writings, loading, error, refetch };
+  useEffect(() => {
+    // Initial fetch if no cached data or if we want to refresh
+    if (writings.length === 0) {
+      fetchWritings(1, false);
+    } else {
+      // If we have cached data, still sync the total and hasMore info
+      // But maybe just let it be until they scroll or refetch
+    }
+  }, []); // Only run once on mount
+
+  return { 
+    writings, 
+    loading, 
+    loadingMore, 
+    error, 
+    hasMore, 
+    total, 
+    refetch, 
+    loadMore 
+  };
 };
 
 // ─── useWriting (single by slug) ────────────────────────────────────────────
