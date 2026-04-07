@@ -51,7 +51,16 @@ const WritingRow = ({ writing, index }) => {
 };
 
 const Writes = () => {
-  const { writings, loading, loadingMore, error, hasMore, total, refetch, loadMore } = useWritings(6);
+  const {
+    writings,
+    loading,
+    loadingMore,
+    error,
+    hasMore,
+    total,
+    refetch,
+    loadMore,
+  } = useWritings(6);
   const observerRef = useRef();
 
   useEffect(() => {
@@ -61,7 +70,7 @@ const Writes = () => {
           loadMore();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (observerRef.current) {
@@ -97,7 +106,8 @@ const Writes = () => {
             </h1>
           </div>
           <p className="text-gray-400 text-lg sm:text-xl max-w-xs sm:text-right leading-relaxed pb-2">
-            Thoughts, tutorials & insights on tech, code, and design.
+            Thoughts, poetry, and everything in between - no schedule, just
+            feeling.
           </p>
         </div>
       </div>
@@ -151,9 +161,15 @@ const Writes = () => {
             </div>
 
             {/* Load More Trigger */}
-            <div ref={observerRef} className="h-10 w-full flex items-center justify-center mt-10">
+            <div
+              ref={observerRef}
+              className="h-10 w-full flex items-center justify-center mt-10"
+            >
               {loadingMore && (
-                <p className="text-2xl text-gray-400 animate-pulse" style={{ fontFamily: "Gaegu, cursive" }}>
+                <p
+                  className="text-2xl text-gray-400 animate-pulse"
+                  style={{ fontFamily: "Gaegu, cursive" }}
+                >
                   loading more...
                 </p>
               )}

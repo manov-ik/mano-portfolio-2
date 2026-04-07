@@ -59,6 +59,21 @@ const achievementsData = [
       "Led tech initiatives in one of REC's largest tech clubs, impacting 2000+ members through projects, innovation, and partnerships.",
     tags: ["Leadership", "Community"],
   },
+  {
+    dateRange: "Mar 2024",
+    title: "Build Masters",
+    company: "Bootup’24, REC",
+    description:
+      "Secured 1st Prize by completing a full PC build in just 5 minutes and 54 seconds.",
+    tags: ["PC Building", "Competition"],
+  },
+  {
+    dateRange: "Sep 2024",
+    title: "Shark Tank",
+    company: "IEEE, REC",
+    description: "Secured 2nd Prize. Pitched an idea and won the competition.",
+    tags: ["Innovation"],
+  },
 ];
 
 const TimelineEntry = ({
@@ -255,7 +270,10 @@ const About = () => {
     <div className="relative w-full min-h-[calc(100vh-4rem)] overflow-hidden pt-16">
       <Helmet>
         <title>About - Manovikram K</title>
-        <meta name="description" content="Learn more about Manovikram K - a curious developer and designer from Chennai, building things he actually cares about. Skills, experience, and education." />
+        <meta
+          name="description"
+          content="Learn more about Manovikram K - a curious developer and designer from Chennai, building things he actually cares about. Skills, experience, and education."
+        />
         <link rel="canonical" href="https://manovik.netlify.app/about" />
       </Helmet>
       <StickerPeel

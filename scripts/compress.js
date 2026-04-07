@@ -2,9 +2,9 @@ import sharp from "sharp";
 import fs from "fs";
 import path from "path";
 
-const inputFolder = "./unc_design";
-const outputFolder = "./public/design";
-const dataOutputFile = "./src/data/designData.js";
+const inputFolder = "./unc_gallery";
+const outputFolder = "./public/gallery";
+const dataOutputFile = "./src/data/galleryData.js";
 
 // Recursive function to compress images and maintain folder structure
 async function compressFolder(currentInput, currentOutput) {

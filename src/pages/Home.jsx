@@ -13,7 +13,10 @@ export default function Home() {
     <>
       <Helmet>
         <title>Manovikram K - Developer, Designer &amp; ML Engineer</title>
-        <meta name="description" content="Hi, I'm Manovikram K - a developer, designer, and ML engineer. Explore my projects, writings, and design work all in one place." />
+        <meta
+          name="description"
+          content="Hi, I'm Manovikram K - a developer, designer, and ML engineer. Explore my projects, writings, and design work all in one place."
+        />
         <link rel="canonical" href="https://manovik.netlify.app/" />
       </Helmet>
       <div className="relative overflow-hidden w-full min-h-screen flex items-center justify-center px-6 py-16 sm:px-10 md:px-16">
@@ -100,7 +103,13 @@ export default function Home() {
           >
             <span className="text-gray-500">a</span>
             <RotatingText
-              texts={["Developer", "Creator", "Designer", "ML Engineer"]}
+              texts={[
+                "Developer",
+                "Creator",
+                "Designer",
+                "ML Engineer",
+                // "Artist",
+              ]}
               mainClassName="px-4 py-1 rounded-lg bg-white shadow-lg -rotate-2 text-[#7e57e2] text-2xl sm:text-3xl"
               staggerFrom="last"
               initial={{ y: "100%" }}

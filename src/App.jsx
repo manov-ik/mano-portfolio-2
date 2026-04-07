@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
 import Home from "./pages/Home";
 import Writes from "./pages/Writes";
 import WritingDetail from "./pages/WritingDetail";
@@ -12,8 +13,22 @@ import Contact from "./pages/Contact";
 import CardNav from "./components/CardNav";
 // import MagnetLines from "./components/MagnetLines";
 import manoLogo from "./assets/mano-logo.png";
+import CookieBanner from "./components/CookieBanner";
+import { loadGoogleAnalytics } from "./utils/analytics";
 
 function App() {
+  // Toggle this to true/false to enable or disable the cookie banner across the site
+  const ENABLE_COOKIE_BANNER = false;
+
+  useEffect(() => {
+    // Attempt to load analytics immediately if the user already gave consent
+    // OR if the cookie banner is disabled entirely.
+    const consent = localStorage.getItem("cookieConsent");
+    if (!ENABLE_COOKIE_BANNER || consent === "accepted") {
+      loadGoogleAnalytics();
+    }
+  }, []);
+
   const items = [
     {
       label: "About",
@@ -75,6 +90,8 @@ function App() {
         ease="power3.out"
         theme="light"
       />
+
+      <CookieBanner enabled={ENABLE_COOKIE_BANNER} />
 
       <Routes>
         <Route path="/" element={<Home />} />
