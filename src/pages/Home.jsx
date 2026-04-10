@@ -3,8 +3,8 @@ import StickerPeel from "../components/StickerPeel";
 import RotatingText from "../components/RotatingText";
 import logo from "../assets/illustation 2.png";
 import logo127001 from "../assets/logo127001.png";
-import mano1 from "../assets/mano1.png";
-import mano3 from "../assets/mano3.png";
+import mano1 from "../assets/mano1.webp";
+import mano3 from "../assets/mano3.webp";
 
 export default function Home() {
   return (

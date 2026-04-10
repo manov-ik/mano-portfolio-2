@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import StickerPeel from "../components/StickerPeel";
-import mano1 from "../assets/mano1.png";
+import mano1 from "../assets/mano1.webp";
 import TextPressure from "../components/TextPressure";
 
 const experienceData = [
