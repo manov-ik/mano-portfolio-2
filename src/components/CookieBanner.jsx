@@ -1,20 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { loadGoogleAnalytics } from "../utils/analytics";
 
+const AUTO_CLOSE_DELAY = 3000; // ms
+
 const CookieBanner = ({ enabled = true }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const autoCloseRef = useRef(null);
 
   useEffect(() => {
     // Check if the user has already made a choice
-    const consent = localStorage.getItem("cookieConsent");
+    const consent = false && localStorage.getItem("cookieConsent");
     if (!consent && enabled) {
       setTimeout(() => {
         setIsVisible(true);
       }, 1000); // Small delay before showing
     }
   }, [enabled]);
+
+  // Start auto-accept countdown once banner becomes visible
+  useEffect(() => {
+    if (isVisible) {
+      autoCloseRef.current = setTimeout(() => {
+        handleAccept();
+      }, AUTO_CLOSE_DELAY);
+    }
+    return () => clearTimeout(autoCloseRef.current);
+  }, [isVisible]);
 
   const handleAccept = () => {
     localStorage.setItem("cookieConsent", "accepted");
@@ -74,6 +87,19 @@ const CookieBanner = ({ enabled = true }) => {
                 Decline
               </button> */}
             </div>
+
+            {/* Auto-close progress bar */}
+            {/* <div className="mx-1 mt-1 h-[3px] rounded-full bg-gray-100 overflow-hidden">
+              <motion.div
+                className="h-full bg-black rounded-full"
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{
+                  duration: AUTO_CLOSE_DELAY / 1000,
+                  ease: "linear",
+                }}
+              />
+            </div> */}
           </div>
         </motion.div>
       )}

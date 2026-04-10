@@ -18,15 +18,11 @@ import { loadGoogleAnalytics } from "./utils/analytics";
 
 function App() {
   // Toggle this to true/false to enable or disable the cookie banner across the site
-  const ENABLE_COOKIE_BANNER = false;
+  const ENABLE_COOKIE_BANNER = true;
 
   useEffect(() => {
-    // Attempt to load analytics immediately if the user already gave consent
-    // OR if the cookie banner is disabled entirely.
-    const consent = localStorage.getItem("cookieConsent");
-    if (!ENABLE_COOKIE_BANNER || consent === "accepted") {
-      loadGoogleAnalytics();
-    }
+    // Analytics starts automatically — banner is informational only.
+    loadGoogleAnalytics();
   }, []);
 
   const items = [
