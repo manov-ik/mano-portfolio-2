@@ -10,9 +10,10 @@ const CookieBanner = ({ enabled = true }) => {
   const autoCloseRef = useRef(null);
 
   useEffect(() => {
-    // Check if the user has already made a choice
-    const consent = false && localStorage.getItem("cookieConsent");
-    if (!consent && enabled) {
+    // Only show once per browser session (sessionStorage resets when tab closes)
+    const shownThisSession = sessionStorage.getItem("cookieBannerShown");
+    if (!shownThisSession && enabled) {
+      sessionStorage.setItem("cookieBannerShown", "true");
       setTimeout(() => {
         setIsVisible(true);
       }, 1000); // Small delay before showing
@@ -30,14 +31,12 @@ const CookieBanner = ({ enabled = true }) => {
   }, [isVisible]);
 
   const handleAccept = () => {
-    localStorage.setItem("cookieConsent", "accepted");
     setIsVisible(false);
     // Fire it immediately upon click
     loadGoogleAnalytics();
   };
 
   const handleDecline = () => {
-    localStorage.setItem("cookieConsent", "declined");
     setIsVisible(false);
   };
 
