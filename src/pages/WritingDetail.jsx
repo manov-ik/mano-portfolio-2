@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useWriting } from "../hooks/useWritings";
+import ScrollHighlight from "../components/ScrollHighlight";
 
 const WritingDetail = () => {
   const { slug } = useParams();
@@ -113,16 +114,16 @@ const WritingDetail = () => {
       {/* ── Content ── */}
       <div className="px-5 pb-24 max-w-3xl mx-auto">
         {/* Excerpt */}
-        {writing.excerpt && (
+        {/* {writing.excerpt && (
           <p
             className="text-xl text-gray-400 leading-relaxed pb-2 mb-2"
             style={{ fontFamily: "Gaegu, cursive" }}
           >
-            {writing.excerpt}
+            <ScrollHighlight>{writing.excerpt}</ScrollHighlight>
           </p>
-        )}
+        )} */}
         <div
-          className="prose prose-lg max-w-none text-gray-700 leading-relaxed whitespace-pre-wrap"
+          className="prose pl-4 sm:pl-8 md:pl-10 lg:pl-0 prose-lg max-w-none text-gray-700 leading-relaxed whitespace-pre-wrap"
           style={{ fontFamily: "Gaegu, cursive" }}
         >
           {writing.content}

@@ -85,7 +85,10 @@ function Projects() {
     <div className="min-h-screen selection:bg-[#7e57e2]/20">
       <Helmet>
         <title>Projects - Manovikram K</title>
-        <meta name="description" content="Selected works by Manovikram K - a collection of full-stack, ML, and design projects built with pixels, logic, and late-night caffeine." />
+        <meta
+          name="description"
+          content="Selected works by Manovikram K - a collection of full-stack, ML, and design projects built with pixels, logic, and late-night caffeine."
+        />
         <link rel="canonical" href="https://manovik.netlify.app/projects" />
       </Helmet>
       {/* ── Quirky Header ── */}
@@ -108,7 +111,7 @@ function Projects() {
               </h1>
             </div>
             <p className="text-gray-400 text-lg sm:text-xl max-w-xs sm:text-right leading-relaxed pb-2">
-              A collection of pixels, logic, and late-night caffeine.
+              A collection of ideas, logic, and late-night caffeine.
             </p>
           </div>
         </div>

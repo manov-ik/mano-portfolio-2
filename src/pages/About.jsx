@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import StickerPeel from "../components/StickerPeel";
 import mano1 from "../assets/mano1.webp";
 import TextPressure from "../components/TextPressure";
+import ScrollHighlight from "../components/ScrollHighlight";
 
 const experienceData = [
   {
@@ -307,20 +308,26 @@ const About = () => {
         </div>
         <div className="max-w-5xl mx-auto mt-6 pl-1 sm:pl-2">
           <p className="text-gray-500 text-lg sm:text-xl leading-relaxed max-w-3xl text-justify">
-            Hello, I’m Manovikram K. A curious guy in his early 20s trying to
-            spend his time doing things he actually cares about. I like building
-            things, but I’m not just about code.
+            Hello,<ScrollHighlight> I’m Manovikram K.</ScrollHighlight> A
+            curious guy in his early 20s trying to spend his time doing things
+            he actually cares about. I like building things, but I’m not just
+            about code.
+            <br />
+            <br />I enjoy understanding how things work - whether it’s{" "}
+            <ScrollHighlight delay={0.3}>
+              software, design, or just how people think.
+            </ScrollHighlight>{" "}
+            Most of what I do comes from solving my own problems or curiosity
+            turning into something real.
             <br />
             <br />
-            I enjoy understanding how things work - whether it’s software,
-            design, or just how people think. Most of what I do comes from
-            solving my own problems or curiosity turning into something real.
-            <br />
-            <br />
-            Outside of that - I’m into music, books, random ideas, and figuring
-            life out one step at a time. I don’t have everything planned. I just
-            try to stay consistent, keep learning, and build things that matter
-            to me.
+            Outside of that - I’m into{" "}
+            <ScrollHighlight delay={0.5}>
+              music, books, random ideas,
+            </ScrollHighlight>{" "}
+            and figuring life out one step at a time. I don’t have everything
+            planned. I just try to stay consistent , keep learning, and build
+            things that matter to me.
             {/* 
             I’m Manovikram K, a final year engineering student focused on
             building optimal and scalable systems. As a designer and developer,
@@ -334,7 +341,9 @@ const About = () => {
             CREATE.DEVELOP.DEPLOY.
           </p>
           <p className="text-black text-md lg:text-lg">
-            #createsomethingdifferent
+            <ScrollHighlight duration={1.2} delay={0.8}>
+              #createsomethingdifferent
+            </ScrollHighlight>
           </p>
         </div>
       </div>
@@ -592,7 +601,7 @@ const About = () => {
         className="text-2xl text-center m-auto text-gray-400"
         style={{ fontFamily: "Gaegu, cursive" }}
       >
-        this is me
+        <ScrollHighlight>and this is me</ScrollHighlight>
       </p>
       <TextPressure
         text="MANOVIKRAM K"
